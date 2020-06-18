@@ -8,6 +8,8 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:welmy/utils/sidebar.dart';
 
+import '../services/balanca.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -155,7 +157,7 @@ class _ScanState extends State<HomePage> {
                           child: IconButton(
                               icon: Image.asset('assets/images/qrcode-trans.png'),
                               iconSize: 60,
-                              onPressed: scan,
+                              onPressed: scan, 
                             ),
                         ), 
                       ),
@@ -216,7 +218,9 @@ class _ScanState extends State<HomePage> {
                               )
                             ],
                           ), 
-                          onPressed: () => {}, 
+                          onPressed: () => {
+                            changeUser(context)
+                          }, 
                           splashColor: Colors.lightBlueAccent,
                         ),
                       ), 
@@ -286,16 +290,29 @@ class _ScanState extends State<HomePage> {
     );
   }
 
-  
+ 
+  changeUser(BuildContext context){
+    Navigator.popAndPushNamed( 
+      context,
+      '/pacientes'
+    );
+  }
 
   Future scan() async {
     try {
       String barcode = await BarcodeScanner.scan();
       setState(() => this.barcode = barcode);
+      print(barcode);
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.CameraAccessDenied) {
         setState(() {
-          this.barcode = 'The user did not grant the camera permission!';
+          //this.barcode = 'The user did not grant the camera permission!';
+          this.barcode = 'ecfabc5ee4c0';
+          print('chamou teste');
+          BalancaApi.doMeasure('ecfabc5ee4c0').then((v) => {
+            print(v),
+            print('resultado teste')
+          });
         });
       } else {
         setState(() => this.barcode = 'Unknown error: $e');

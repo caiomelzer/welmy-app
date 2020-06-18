@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LoginApi{
   static Future<bool> signin(String user, String password) async {
     try{
-      var url ='http://ec2-18-228-166-214.sa-east-1.compute.amazonaws.com:8080/api/auth/signin';
+      var url ='http://welmy.iogas.com.br:8080/api/auth/signin';
       var header = {"Content-Type" : "application/json"};
       if(user.length < 3)
         return false;
@@ -39,7 +39,7 @@ class LoginApi{
   }
   static Future<bool> signup(String username, String password, String fullname, String email) async {
     try{
-      var url ='http://ec2-18-228-166-214.sa-east-1.compute.amazonaws.com:8080/api/auth/signup';
+      var url ='http://welmy.iogas.com.br:8080/api/auth/signup';
       var header = {"Content-Type" : "application/json"};
       Map params = {
         "username" : username,

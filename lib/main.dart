@@ -3,6 +3,7 @@ import 'package:welmy/pages/signin.dart';
 import 'package:welmy/pages/signup.dart';
 import 'package:welmy/pages/balanca.dart';
 import 'package:welmy/pages/about.dart';
+import 'package:welmy/pages/patient.dart';
 
 import 'package:http/http.dart';
 import 'package:flutter/services.dart';
@@ -29,6 +30,7 @@ class _MyAppState  extends State<MyApp> {
         '/signup': (context) => SignupPage(),
         '/balanca': (context) => BalancaPage(),
         '/sobre': (context) => AboutPage(),
+        '/pacientes': (context) => PatientPage(),
       },
       theme: ThemeData(primaryColor : Colors.blue),
       home: checkUserLoggedIn() == null
@@ -41,7 +43,6 @@ Future<bool> checkUserLoggedIn() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token = prefs.getString('token');
   print(token); 
-  print('adasca'+ token);
   if(token != null){
     return true;
   }

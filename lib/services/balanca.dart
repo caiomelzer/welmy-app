@@ -4,27 +4,27 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:welmy/models/Network.dart';
 class BalancaApi{
   static Future<bool> register(String ssid, String password) async {
+    //AJUSTAR A URL ABAIXO TIAGO
+    var url ='http://192.168.4.1/colocar a url para registrar o wifi';
+    var header = {"Content-Type" : "application/json"};
     try{
-      var url ='http://welmy.iogas.com.br:8080/api/auth/signin';
-      var header = {"Content-Type" : "application/json"};
       if(ssid.length < 3)
         return false;
       if(password.length < 3)
         return false;
-        //http://192.168.4.1/app/find-networks
       Map params = {
         "AP" : ssid,
         "Pass" : password
       };
       var _body = json.encode(params);
-      var response = await http.get('http://welmy.iogas.com.br:8080/');
+      var response = await http.post(url, headers: header, body: _body);
       Map mapResponse = json.decode(response.body);
       print(mapResponse);
-      return true;
       
     }on Exception catch (e) {
       print('Exception details:\n $e');
     }
+    return true;
   }
   static Future<dynamic> list() async {
     var header = {
@@ -37,4 +37,22 @@ class BalancaApi{
       throw Exception('Failed to load album');
     }
   }
+  static Future<bool> doMeasure(String mac) async {
+    try{
+      var url ='http://welmy.iogas.com.br:8080/api/equipments/'+mac+'/measurements/';
+      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+      var token = sharedPreferences.get('token');
+      var header = {"x-access-token": "$token", "Content-Type" : "application/json"};
+      var patientId = 1;
+      Map params = {"patientId": 1};
+      var _body = json.encode(params);
+      var response = await http.post(url,headers:header, body: _body);
+      Map mapResponse = json.decode(response.body);
+      }on Exception catch (e) {
+      print('Exception details:\n $e');
+    }
+    return Future.delayed(Duration(seconds: 0), () => true);
+  }
+
+
 }
