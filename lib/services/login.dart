@@ -28,6 +28,7 @@ class LoginApi{
         sharedPreferences.setString('username', username);
         sharedPreferences.setString('userId', userId);
         sharedPreferences.setString('patientId', patientId);
+        sharedPreferences.setString('patientFullname', username);
         return true;
       }
       else{
@@ -51,6 +52,7 @@ class LoginApi{
       var response = await http.post(url, headers:header, body: _body);
       Map mapResponse = json.decode(response.body);
       String token = mapResponse["accessToken"];
+      print(mapResponse);
       if(token.length < 1){
         String username = mapResponse["username"];
         String userId = mapResponse["id"].toString();
@@ -60,6 +62,7 @@ class LoginApi{
         sharedPreferences.setString('username', username);
         sharedPreferences.setString('userId', userId);
         sharedPreferences.setString('patientId', patientId);
+        sharedPreferences.setString('patientFullname', username);
         return true;
       }
       return false;

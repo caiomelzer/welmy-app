@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:welmy/pages/home.dart';
-import 'package:welmy/pages/signup.dart';
 import 'package:welmy/utils/alert.dart';
 import 'package:welmy/services/login.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:welmy/models/patient.dart';
+import 'package:welmy/services/data.dart';
+
 
 class SigninPage extends StatelessWidget {
   
@@ -71,9 +72,6 @@ class SigninPage extends StatelessWidget {
     );
   }
 
-  //var assetsImage = new AssetImage('assets/images/mountain.jpg'); //<- Creates an object that fetches an image.
-  //var image = new Image(image: assetsImage, fit: BoxFit.cover); //<- Creates a widget that displays an image.
-
   _textFormField(
     String label,
     String hint, {
@@ -136,18 +134,19 @@ class SigninPage extends StatelessWidget {
     String login = _ctrlLogin.text;
     String senha = _ctrlSenha.text;
     var response = await LoginApi.signin(login,senha);
-    if(response)
-      _navegaHomepage(context);
+    if(response){
+      var patient = new Patient();
+      print(response);
+      await DataApi.getPatientFullname().then((value){
+        print(value);
+        patient.fullname = value;
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => HomePage(patient))
+        );
+      });
+    }
     else
       Alert.showAlertDialog(context, 'Ops...', 'Algo deu errado ao tentar fazer login. Verifique seu login e senha e tente novamente','alert');
+    }
   }
-
-  _navegaHomepage(BuildContext context){
-    Navigator.popAndPushNamed( 
-      context,
-      '/home'
-    );
-  }
-
-}
 

@@ -4,6 +4,9 @@ import 'package:welmy/pages/signin.dart';
 import 'package:welmy/pages/balanca.dart';
 import 'package:welmy/pages/home.dart';
 import 'package:welmy/pages/about.dart';
+import 'package:welmy/models/patient.dart';
+import 'package:welmy/services/data.dart';
+
 
 class Sidebar extends StatelessWidget {
   @override
@@ -20,11 +23,15 @@ class Sidebar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Home'),
-            onTap: () => {
-              Navigator.popAndPushNamed( 
-                context,
-                '/home'
-              )
+            onTap: () {
+              var patient = new Patient();
+              DataApi.getPatientFullname().then((value){
+                patient.fullname = value;
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => HomePage(patient))
+                );
+              });
+              
             },
           ),
           ListTile(

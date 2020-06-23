@@ -3,17 +3,19 @@ import 'package:welmy/pages/signin.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:welmy/Contants.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:welmy/utils/sidebar.dart';
-
 import '../services/balanca.dart';
+import 'package:welmy/models/patient.dart';
+
 
 
 class HomePage extends StatefulWidget {
+  Patient patient;
+  HomePage([this.patient]);
   @override
-  _ScanState createState() => new _ScanState();
+  _HomePageState createState() => _HomePageState();
 }
 
 class ClicksPerYear {
@@ -26,9 +28,9 @@ class ClicksPerYear {
             r: color.red, g: color.green, b: color.blue, a: color.alpha);
 }
 
-class _ScanState extends State<HomePage> {
+class _HomePageState extends State<HomePage> {
   int _counter = 0;
-
+  
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -36,16 +38,22 @@ class _ScanState extends State<HomePage> {
   }
   String barcode = "";
   String viewSelected = "Semana";
-  String userSelected = "Ana Luiza Silva Oliveira";
+  //String userSelected = widget.;
   final List<String> items = <String>['Dia','Semana','Mes'];
 
   @override
   initState() {
     super.initState();
+    
   }
 
   @override
   Widget build(BuildContext context) {
+    print(_HomePageState);
+    
+
+
+
     var data = [
       ClicksPerYear('Dom', 10, Colors.lightBlue),
       ClicksPerYear('Seg', 11, Colors.lightBlue),
@@ -205,7 +213,7 @@ class _ScanState extends State<HomePage> {
                               Expanded(
                                 flex: 4,
                                 child: Align(
-                                  child: Text(userSelected,style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white, fontSize: 16),),
+                                  child: Text(widget.patient.fullname,style: TextStyle(fontWeight: FontWeight.normal, color: Colors.white, fontSize: 16),),
                                   alignment: Alignment.topLeft,
                                 ),
                               ),
@@ -290,7 +298,8 @@ class _ScanState extends State<HomePage> {
     );
   }
 
- 
+  
+
   changeUser(BuildContext context){
     Navigator.popAndPushNamed( 
       context,
