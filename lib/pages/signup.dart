@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:welmy/pages/home.dart';
 import 'package:welmy/services/login.dart';
-import 'package:welmy/pages/signin.dart';
-
+import 'package:welmy/models/patient.dart';
+import 'package:welmy/services/data.dart';
+import 'package:welmy/utils/alert.dart';
 
 class SignupPage extends StatelessWidget {
   
@@ -154,18 +155,26 @@ class SignupPage extends StatelessWidget {
 
 
     var response = await LoginApi.signup(username,password,fullname,email);
+    var patient = new Patient();
+    patient.fullname = fullname;
+    
     
     if(response){
-      _navegaHomepage(context);
+      var patient = new Patient();
+      print(response);
+      await DataApi.getPatientFullname().then((value){
+        print(value);
+        patient.fullname = value;
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => HomePage(patient))
+        );
+      });
+    }
+    else
+      Alert.showAlertDialog(context, 'Ops...', 'Algo deu errado ao tentar fazer login. Verifique seu login e senha e tente novamente','alert');
     }
 
   }
+    
 
-  _navegaHomepage(BuildContext context){
-    Navigator.popAndPushNamed( 
-      context,
-      '/home'
-    );
-  }
 
-}
