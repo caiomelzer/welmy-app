@@ -1,14 +1,15 @@
 import 'dart:async';
-import 'package:welmy/pages/signin.dart';
+import 'package:welmy/models/Measurement.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:welmy/utils/sidebar.dart';
 import '../services/balanca.dart';
+import '../services/measures.dart';
 import 'package:welmy/models/patient.dart';
-
+import 'package:welmy/utils/alert.dart';
+import 'package:welmy/services/data.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -18,59 +19,35 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class ClicksPerYear {
-  final String year;
-  final int clicks;
-  final charts.Color color;
 
-  ClicksPerYear(this.year, this.clicks, Color color)
-      : this.color = charts.Color(
-            r: color.red, g: color.green, b: color.blue, a: color.alpha);
-}
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-  
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  List data2 = List(); //edited line
+  List<Measurement> measures = [];
+
   String barcode = "";
-  String viewSelected = "Semana";
+  String viewSelected = "Mes";
   //String userSelected = widget.;
-  final List<String> items = <String>['Dia','Semana','Mes'];
+  final List<String> items = <String>['7 dias','30 dias','Mes','Ano'];
 
   @override
   initState() {
     super.initState();
-    
+    getChartData2(viewSelected); 
+
   }
 
   @override
   Widget build(BuildContext context) {
-    print(_HomePageState);
     
-
-
-
-    var data = [
-      ClicksPerYear('Dom', 10, Colors.lightBlue),
-      ClicksPerYear('Seg', 11, Colors.lightBlue),
-      ClicksPerYear('Ter', 12, Colors.lightBlue),
-      ClicksPerYear('Qua', 12, Colors.lightBlue),
-      ClicksPerYear('Qui', 12, Colors.lightBlue),
-      ClicksPerYear('Sex', 13, Colors.lightBlue),
-      ClicksPerYear('Sab', 12, Colors.lightBlue),
-    ];
     var series = [
-      charts.Series(
-        domainFn: (ClicksPerYear clickData, _) => clickData.year,
-        measureFn: (ClicksPerYear clickData, _) => clickData.clicks,
-        colorFn: (ClicksPerYear clickData, _) => clickData.color,
+      new charts.Series<Measurement, String>(
+        domainFn: (Measurement clickData, _) => clickData.computedAt,
+        measureFn: (Measurement clickData, _) => clickData.weight,
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
         id: 'Gramas',
-        data: data,
-      ),
+        data: measures
+      ), 
     ];
 
     var chart = charts.BarChart(
@@ -120,7 +97,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 color: Colors.grey[350],
                 child: Row(
-                  children: <Widget>[
+                  children: <Widget>[ 
                     Expanded(
                       flex: 1,
                       child: Padding(
@@ -180,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                             children: <Widget>[
                               RichText(
                                 text: TextSpan(
-                                  text: '3,815',
+                                  text: '0,000',
                                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 65, color: Colors.black54, letterSpacing: -5),
                                   children: <TextSpan>[
                                     TextSpan(text: 'kg', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: -3, fontSize: 45, color: Colors.lightBlueAccent), ),
@@ -299,28 +276,40 @@ class _HomePageState extends State<HomePage> {
   }
 
   
-
   changeUser(BuildContext context){
     Navigator.popAndPushNamed( 
       context,
       '/pacientes'
     );
+  } 
+
+  Future<String> getChartData2(selectedView) async {
+    var patientId = await DataApi.getPatientId();
+    var response =  await MeasureApi.list(patientId,selectedView);
+    setState(() {
+      data2 = response;
+      measures = data2.map((item) => Measurement(item['id'],item['fullname'],double.parse(item['weight']),item['x'])).toList();
+    });
+    return measures.toString();
   }
 
+ 
   Future scan() async {
     try {
       String barcode = await BarcodeScanner.scan();
-      setState(() => this.barcode = barcode);
-      print(barcode);
+      setState(() {
+        this.barcode = barcode;
+        BalancaApi.doMeasure(this.barcode).then((v) => {
+          Alert.showAlertDialog(context, 'Vamos lá!', 'Favor efetuar a medição em até 30 segundos. Caso não efetue, a leitura será desconsiderada.','alert')
+        });
+      }); 
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.CameraAccessDenied) {
         setState(() {
           //this.barcode = 'The user did not grant the camera permission!';
           this.barcode = 'ecfabc5ee4c0';
-          print('chamou teste');
-          BalancaApi.doMeasure('ecfabc5ee4c0').then((v) => {
-            print(v),
-            print('resultado teste')
+          BalancaApi.doMeasure(this.barcode).then((v) => {
+            Alert.showAlertDialog(context, 'Vamos lá!', 'Você ja pode efetuar a medição','alert')
           });
         });
       } else {
@@ -334,7 +323,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   String changeView(String selectedView){
-    print(selectedView);
+    getChartData2(selectedView);
     return selectedView;
   }
-}
+} 

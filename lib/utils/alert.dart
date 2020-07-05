@@ -7,7 +7,9 @@ class Alert{
     // set up the button
     Widget okButton = FlatButton(
       child: Text(btnOk),
-      onPressed: () { },
+      onPressed: () {
+        Navigator.of(context).pop();
+       },
     );
 
     // set up the AlertDialog
@@ -21,6 +23,7 @@ class Alert{
 
     // show the dialog
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return alert;

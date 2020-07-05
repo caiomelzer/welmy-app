@@ -1,0 +1,34 @@
+dependencies: \
+  /Users/caiomelzer/Develop/welmy-app/ios/Runner/GeneratedPluginRegistrant.m \
+  /Users/caiomelzer/Develop/welmy-app/ios/Runner/GeneratedPluginRegistrant.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Modules/module.modulemap \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterTexture.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterPlugin.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterEngine.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterDartProject.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterBinaryMessenger.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterViewController.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterPlatformViews.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterHeadlessDartRunner.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterChannels.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterCallbackCache.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterCodecs.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterMacros.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/FlutterAppDelegate.h \
+  /Users/caiomelzer/Develop/welmy-app/ios/Flutter/Flutter.framework/Headers/Flutter.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/barcode_scan/barcode_scan.framework/Headers/BarcodeScanPlugin.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/barcode_scan/barcode_scan.framework/Modules/module.modulemap \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/MTBBarcodeScanner/MTBBarcodeScanner.framework/Modules/module.modulemap \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/MTBBarcodeScanner/MTBBarcodeScanner.framework/Headers/MTBBarcodeScanner.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/MTBBarcodeScanner/MTBBarcodeScanner.framework/Headers/MTBBarcodeScanner-umbrella.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/barcode_scan/barcode_scan.framework/Headers/ScannerOverlay.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/barcode_scan/barcode_scan.framework/Headers/BarcodeScannerViewControllerDelegate.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/barcode_scan/barcode_scan.framework/Headers/BarcodeScannerViewController.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/barcode_scan/barcode_scan.framework/Headers/barcode_scan-umbrella.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/path_provider/path_provider.framework/Headers/PathProviderPlugin.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/path_provider/path_provider.framework/Modules/module.modulemap \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/path_provider/path_provider.framework/Headers/path_provider-umbrella.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/shared_preferences/shared_preferences.framework/Headers/FLTSharedPreferencesPlugin.h \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/shared_preferences/shared_preferences.framework/Modules/module.modulemap \
+  /Users/caiomelzer/Develop/welmy-app/build/ios/Debug-iphoneos/shared_preferences/shared_preferences.framework/Headers/shared_preferences-umbrella.h

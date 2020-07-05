@@ -27,7 +27,6 @@ class _MyAppState  extends State<MyApp> {
     print(userData);
     
     print(checkUserLoggedIn());
-    print('aq');
     var page = checkUserLoggedIn() == null
           ? HomePage(null)
           : SigninPage();

@@ -10,14 +10,15 @@ class DataApi{
   static Future<String> getPatientFullname() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String patientFullname = prefs.getString('patientFullname');
-    print('called getPatientFullname');
-    print(patientFullname);
     return patientFullname;
   }
   static void setPatientFullname(String patientFullname) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('patientFullname', patientFullname);
-    print('called setPatientFullname');
-    print(patientFullname);
+  }
+  static Future<String> getPatientId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String patientId = prefs.getString('patientId');
+    return patientId;
   }
 }

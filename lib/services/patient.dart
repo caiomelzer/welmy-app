@@ -8,6 +8,7 @@ class PatientApi{
     };
     var response = await http.get(url, headers: header);
     if (response.statusCode == 200) {
+      print(response.body);
       return json.decode(response.body);
     } else {
       throw Exception('Failed to load album');

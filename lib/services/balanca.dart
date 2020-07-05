@@ -5,7 +5,7 @@ import 'package:welmy/models/Network.dart';
 class BalancaApi{
   static Future<bool> register(String ssid, String password) async {
     //AJUSTAR A URL ABAIXO TIAGO
-    var url ='http://192.168.4.1/colocar a url para registrar o wifi';
+    var url ='http://192.168.4.1/app/reset';
     var header = {"Content-Type" : "application/json"};
     try{
       if(ssid.length < 3)
