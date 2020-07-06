@@ -308,7 +308,7 @@ class _HomePageState extends State<HomePage> {
       if (e.code == BarcodeScanner.CameraAccessDenied) {
         setState(() {
           //this.barcode = 'The user did not grant the camera permission!';
-          this.barcode = 'ecfabc5ee4c0';
+          this.barcode = 'dc4f227623ad';
           BalancaApi.doMeasure(this.barcode).then((v) => {
             Alert.showAlertDialog(context, 'Vamos lá!', 'Você ja pode efetuar a medição','alert')
           });

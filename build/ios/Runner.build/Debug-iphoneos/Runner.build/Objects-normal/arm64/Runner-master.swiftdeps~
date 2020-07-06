@@ -1,5 +1,5 @@
 version: "Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
 options: "3118a876109b3eb82b4cb0be1261a61f"
-build_time: [1592965193, 683713000]
+build_time: [1592965366, 992478000]
 inputs:
   "/Users/caiomelzer/Develop/welmy-app/ios/Runner/AppDelegate.swift": [1587002220, 508788228]
