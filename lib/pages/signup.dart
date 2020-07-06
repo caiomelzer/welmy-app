@@ -153,12 +153,12 @@ class SignupPage extends StatelessWidget {
     String fullname = _ctrlFullname.text;
     String email = _ctrlEmail.text;
 
-
-    var response = await LoginApi.signup(username,password,fullname,email);
+    var response2 = await LoginApi.signup(username,password,fullname,email);
+    
     var patient = new Patient();
     patient.fullname = fullname;
     
-    
+    var response = await LoginApi.signin(username,password);
     if(response){
       var patient = new Patient();
       print(response);
@@ -173,7 +173,6 @@ class SignupPage extends StatelessWidget {
     else
       Alert.showAlertDialog(context, 'Ops...', 'Algo deu errado ao tentar fazer login. Verifique seu login e senha e tente novamente','alert');
     }
-
   }
     
 

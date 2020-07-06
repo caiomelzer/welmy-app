@@ -42,6 +42,7 @@ class ListViewPatients extends StatelessWidget {
 
   void _onTapItem(BuildContext context, Patient patient) {
     DataApi.setPatientFullname(patient.fullname);
+    DataApi.setPatientId(patient.id.toString());
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage(patient)));
   }
 }

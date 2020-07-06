@@ -14,8 +14,9 @@ List<Patient> parsePatients(String responseBody) {
 }
 Future<List<Patient>> fetchPatients(http.Client client) async {
   var token = await DataApi.getToken();
+  var userId = await DataApi.getUserId();
   var header = {"x-access-token": "$token", "Content-Type" : "application/json"};
-  final response = await client.get('http://welmy.iogas.com.br:8080/api/doctors/1/patients/', headers: header);
+  final response = await client.get('http://welmy.iogas.com.br:8080/api/doctors/'+userId+'/patients/', headers: header);
   return parsePatients(response.body);
 }
 

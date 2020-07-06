@@ -22,13 +22,14 @@ class LoginApi{
         String username = mapResponse["username"];
         String userId = mapResponse["id"].toString();
         String patientId = mapResponse["id"].toString();
+        String fullname = mapResponse["fullname"];
         print(mapResponse);
         SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
         sharedPreferences.setString('token', token);
         sharedPreferences.setString('username', username);
         sharedPreferences.setString('userId', userId);
         sharedPreferences.setString('patientId', patientId);
-        sharedPreferences.setString('patientFullname', username);
+        sharedPreferences.setString('patientFullname', fullname);
         return true;
       }
       else{
@@ -51,21 +52,7 @@ class LoginApi{
       var _body = json.encode(params);
       var response = await http.post(url, headers:header, body: _body);
       Map mapResponse = json.decode(response.body);
-      String token = mapResponse["accessToken"];
-      print(mapResponse);
-      if(token.length < 1){
-        String username = mapResponse["username"];
-        String userId = mapResponse["id"].toString();
-        String patientId = mapResponse["id"].toString();
-        SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-        sharedPreferences.setString('token', token);
-        sharedPreferences.setString('username', username);
-        sharedPreferences.setString('userId', userId);
-        sharedPreferences.setString('patientId', patientId);
-        sharedPreferences.setString('patientFullname', username);
-        return true;
-      }
-      return false;
+      return true;
     }on Exception catch (e) {
       print('Exception details:\n $e');
     }

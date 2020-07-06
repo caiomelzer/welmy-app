@@ -285,6 +285,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<String> getChartData2(selectedView) async {
     var patientId = await DataApi.getPatientId();
+    print(patientId);
     var response =  await MeasureApi.list(patientId,selectedView);
     setState(() {
       data2 = response;
@@ -300,7 +301,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         this.barcode = barcode;
         BalancaApi.doMeasure(this.barcode).then((v) => {
-          Alert.showAlertDialog(context, 'Vamos lá!', 'Favor efetuar a medição em até 30 segundos. Caso não efetue, a leitura será desconsiderada.','alert')
+          Alert.showAlertDialog(context, 'Vamos lá!', 'Favor efetuar a medição em até 20 segundos. Caso não efetue, a leitura será desconsiderada.','alert')
         });
       }); 
     } on PlatformException catch (e) {

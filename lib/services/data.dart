@@ -7,6 +7,11 @@ class DataApi{
     String token = prefs.getString('token');
     return token;
   }
+  static Future<String> getUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userId = prefs.getString('userId');
+    return userId;
+  }
   static Future<String> getPatientFullname() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String patientFullname = prefs.getString('patientFullname');
@@ -15,6 +20,10 @@ class DataApi{
   static void setPatientFullname(String patientFullname) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('patientFullname', patientFullname);
+  }
+  static void setPatientId(String patientId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('patientId', patientId);
   }
   static Future<String> getPatientId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
