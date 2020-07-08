@@ -18,11 +18,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		lKW7qDJEsGEGGcg0677ywyzdnLE=
+		MzBaKDwyzNSheukEvs27I1oSAQM=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		zDmPP7aXHMnQkCduWF5ztIFOLec=
+		fC2EZMPW573/CMxXHHJDabEV3Pw=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		Ud+O5IPQF0vocaqLzTtHFBsGVu4=
+		3cwFLeURBRfdenqoXSQbLGZ638w=
 		</data>
 		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<data>
-		q2Z7MuNBxcqcZ6v8GmM8w9vvtdQ=
+		G7BnQuDXD3leLoWBi0zF6pye+9g=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
@@ -42,11 +42,11 @@
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-BYZ-38-t0r.nib</key>
 		<data>
-		xwRyBLcx1iuqZMVdQjfPB+SmPg4=
+		EMqAjiXZUWKQtQQ4ESti5mNwp7M=
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		fMpUWALzfQnkclCWLkcjcaQs7u4=
+		hMQL0siBrJblRVj7UcW7qTnGZ9c=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		Af5EKXONQ9/2mxfVazAe43P5uNA=
+		HsRoyJdpGd6TzvMeaNS2DaVrLBk=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
@@ -102,7 +102,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		tzASAuCBqlqO1N7IJPDSEfsop5Q=
+		Dj4Jc9wP7wgaDkqwe4DmZp/jA24=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -114,7 +114,7 @@
 		</data>
 		<key>Frameworks/Flutter.framework/Flutter</key>
 		<data>
-		NS0L/buOU4Mj60tcFW2Hp5TtYtk=
+		ncyS0utxCNXFbUjWdugsEE4t5N4=
 		</data>
 		<key>Frameworks/Flutter.framework/Headers/Flutter.h</key>
 		<data>
@@ -198,7 +198,7 @@
 		</data>
 		<key>Frameworks/MTBBarcodeScanner.framework/MTBBarcodeScanner</key>
 		<data>
-		eKxKNlBgAesqUEG0MU+mkITEXjQ=
+		nRdf+KxmAabvnq9CZrbJKshbe7g=
 		</data>
 		<key>Frameworks/MTBBarcodeScanner.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -214,7 +214,7 @@
 		</data>
 		<key>Frameworks/barcode_scan.framework/barcode_scan</key>
 		<data>
-		d2TKdZlmu4Z38iSqbfu71frp98w=
+		ujYJWaTlorduJ3YkV57ByeWnv74=
 		</data>
 		<key>Frameworks/path_provider.framework/Info.plist</key>
 		<data>
@@ -226,7 +226,7 @@
 		</data>
 		<key>Frameworks/path_provider.framework/path_provider</key>
 		<data>
-		YWd0Ewwelu+TmNDKDKwH72O5aAo=
+		NVOjOs03zZEScAbUu5RWUy72hfk=
 		</data>
 		<key>Frameworks/shared_preferences.framework/Info.plist</key>
 		<data>
@@ -238,7 +238,7 @@
 		</data>
 		<key>Frameworks/shared_preferences.framework/shared_preferences</key>
 		<data>
-		3J/2d2+fTuV5VTeD0pQ9m66sWwU=
+		NL7GXogO5yL0fBKtPwB1NW384vQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -250,7 +250,7 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		fZH3tEFm4/NIbx+mdnZK88M5IPc=
+		bfo3hyEf/JJisvLHcVK3x5RM2oI=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -280,14 +280,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rDJnPBFa/Frt2MfCyD4QqEkIuC1mLq9w4FrANy6t4IA=
+			Q6VrWJWkY+8cuX/9HQqDm7kGcKI8ZtW/jPAwygZJLxo=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ph0NexpNDcs98mbEcvnbJ+RK2J/Lexz3kMEAcLQeV3k=
+			mAXWz7q9qfATMxyy3GhVfu5iJ4y+oKYwVF4ZQAzMawI=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
@@ -301,14 +301,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gbAuVldioFRDS84SoZGB3Ot/DPaG6O1B7KUP+nByTmg=
+			bMdZcP9Ic1eu6TlMYdsaV4rAXtYVb3CuCOp3sDB/ne8=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			v+EvV9iHLWKQLBBX/oIg2+RZpMZFsVtcIINw1QridrM=
+			45+H/8gM2bFqO14QUW8LUh4U7MaoborIBmng2M2NJHw=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
@@ -322,14 +322,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fQsM0koJ7x/zZcI7DZXsmENDajGOkCt9y6zXwm9M76Y=
+			Tkohbsw4SW7GbdFYiqxll6lbkjTQjJkuLElpW5aRBAw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/App</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ArIH/b2aNtrz557zImk2n7Up+GSDpPpmVwUf63d0T0Q=
+			5uKC5qtKd/bwkfOxRP9B0R2no4Wh8ILC5MQRI2hRMws=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -343,7 +343,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ne06HccDN9/lyPMP1dZiKHPPh7/dVIN8Joua+33Yef0=
+			da3bkUBXqe64mQPhRf920mSCOROhwWd/R5Hdo+1azWk=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
@@ -420,7 +420,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ls8PPf6SJAfqwTmTDdqn7uOCrje+/r6fbN1BMs2V6A4=
+			tAMMeGATMkhMfeLO/SKBKHuMIng7QgfKO9IiVYOlf/U=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -441,7 +441,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ysMmCpK3zTEsU9oMnNJ6MvCCrCyoy1GEDS2u9JnOs/I=
+			qbzXjWvAXbGn9mAHgEs5GrtgDByIvH3FXjGE6r2aBX0=
 			</data>
 		</dict>
 		<key>Frameworks/Flutter.framework/Headers/Flutter.h</key>
@@ -588,7 +588,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			n2P5+FUJO4CwfNUYj/wQa80xnbEO6Nn2j2wFtVoxaRc=
+			iUe0j7t2QRzcSq6mR4GaGa2P4YCq7HrKsYJxWKVOywk=
 			</data>
 		</dict>
 		<key>Frameworks/MTBBarcodeScanner.framework/_CodeSignature/CodeResources</key>
@@ -616,7 +616,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kdmr7u0KaahlGtS7ZgUoaLiPpAWPz3xfhbEoOdI3noc=
+			BYcndJlDUXy1t/fq2lpEyEVCFx0GVxSmwn8C7uB6va0=
 			</data>
 		</dict>
 		<key>Frameworks/path_provider.framework/Info.plist</key>
@@ -637,7 +637,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SCV4fMatWcPyGMMiQZwDQKfeKzcgCQGGY1sEgpQvbsU=
+			J9X+STxCpi3cQH1MGytFypJfZgIGMx/sp7C5ALq6If0=
 			</data>
 		</dict>
 		<key>Frameworks/shared_preferences.framework/Info.plist</key>
@@ -658,14 +658,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oPbskCuYG8e34682wQ8lpZf32N63TvMh+J29aqt7dOA=
+			tTMoNVrzwAgV8gkG88MrbUMlsiBl6wZyJlVJ1XshzpE=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ystKxQeG+TMkIRN+6n9k6FtC5KxcwdTSaALlW1FBShg=
+			t4HRy9Tx227iAiq8xuVCUh48N9lgceFlOmlxzK2gU/I=
 			</data>
 		</dict>
 	</dict>

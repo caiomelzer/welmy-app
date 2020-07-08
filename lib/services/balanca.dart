@@ -43,8 +43,9 @@ class BalancaApi{
       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
       var token = sharedPreferences.get('token');
       var header = {"x-access-token": "$token", "Content-Type" : "application/json"};
-      var patientId = 1;
-      Map params = {"patientId": 1};
+      var patientId = sharedPreferences.get('patientId');
+      print(patientId);
+      Map params = {"patientId": patientId};
       var _body = json.encode(params);
       var response = await http.post(url,headers:header, body: _body);
       Map mapResponse = json.decode(response.body);
