@@ -5,9 +5,7 @@ import 'package:welmy/services/login.dart';
 import 'package:welmy/models/patient.dart';
 import 'package:welmy/services/data.dart';
 
-
 class SigninPage extends StatelessWidget {
-  
   final _ctrlLogin = TextEditingController();
   final _ctrlSenha = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -28,45 +26,33 @@ class SigninPage extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             new Center(
-                  child: Container(
-                    padding: const EdgeInsets.fromLTRB(0, 50, 0, 50),
-                    child: new Stack(
-                      children: <Widget>[
-                        new Image.asset(
-                          'assets/images/logo.png',
-                          width: 200.0,
-                          height: 100.0,
-                        ),
-                      ],
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 50),
+                child: new Stack(
+                  children: <Widget>[
+                    new Image.asset(
+                      'assets/images/logo.png',
+                      width: 200.0,
+                      height: 100.0,
                     ),
-                  ),
+                  ],
                 ),
-            _textFormField(
-              "Usuário",
-              "Digite seu usuário",
-              controller: _ctrlLogin,
-              validator : _validaLogin
+              ),
             ),
-            _textFormField(
-              "Senha",
-              "Digite a Senha",
-              senha: true,
-              controller: _ctrlSenha,
-              validator : _validaSenha
-            ),
+            _textFormField("Usuário", "Digite seu usuário",
+                controller: _ctrlLogin, validator: _validaLogin),
+            _textFormField("Senha", "Digite a Senha",
+                senha: true, controller: _ctrlSenha, validator: _validaSenha),
             _raisedButton("Entrar", Colors.lightBlueAccent, context),
             FlatButton(
               onPressed: () {
-                Navigator.popAndPushNamed( 
-                  context,
-                  '/signup'
-                );
+                Navigator.popAndPushNamed(context, '/signup');
               },
               child: Text(
                 "Registrar",
               ),
             )
-        ],
+          ],
         ),
       ),
     );
@@ -91,26 +77,23 @@ class SigninPage extends StatelessWidget {
   }
 
   String _validaLogin(String texto) {
-    if(texto.isEmpty){
+    if (texto.isEmpty) {
       return "Digite seu usuário";
     }
-    if(texto.length<3){
+    if (texto.length < 3) {
       return "O campo precisa ter mais de 3 caracteres";
     }
     return null;
   }
 
   String _validaSenha(String texto) {
-    if(texto.isEmpty){
+    if (texto.isEmpty) {
       return "Digite a Senha";
     }
     return null;
   }
 
-  _raisedButton(
-    String texto, 
-    Color cor, 
-    BuildContext context) {
+  _raisedButton(String texto, Color cor, BuildContext context) {
     return RaisedButton(
       color: cor,
       child: Text(
@@ -126,27 +109,26 @@ class SigninPage extends StatelessWidget {
     );
   }
 
-   _clickButton(BuildContext context) async {
+  _clickButton(BuildContext context) async {
     bool formOk = _formKey.currentState.validate();
     if (!formOk) {
       return;
     }
     String login = _ctrlLogin.text;
     String senha = _ctrlSenha.text;
-    var response = await LoginApi.signin(login,senha);
-    if(response){
+    var response = await LoginApi.signin(login, senha);
+    if (response) {
       var patient = new Patient();
-      print(response);
-      await DataApi.getPatientFullname().then((value){
-        print(value);
+      await DataApi.getPatientFullname().then((value) {
         patient.fullname = value;
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => HomePage(patient))
-        );
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HomePage(patient)));
       });
-    }
-    else
-      Alert.showAlertDialog(context, 'Ops...', 'Algo deu errado ao tentar fazer login. Verifique seu login e senha e tente novamente','alert');
-    }
+    } else
+      Alert.showAlertDialog(
+          context,
+          'Ops...',
+          'Algo deu errado ao tentar fazer login. Verifique seu login e senha e tente novamente',
+          'alert');
   }
-
+}

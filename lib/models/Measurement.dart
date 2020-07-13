@@ -4,16 +4,16 @@ class Measurement {
   int id;
   String fullname;
   double weight;
-  String computedAt;
+  DateTime computedAt;
 
-  Measurement(this.id,this.fullname, this.weight, this.computedAt);
+  Measurement(this.id, this.fullname, this.weight, this.computedAt);
 
-  factory Measurement.fromJson(Map<String, dynamic> json){
+  factory Measurement.fromJson(Map<String, dynamic> json) {
     return Measurement(
       json['id'] as int,
       json['fullname'] as String,
       json['weight'] as double,
-      json['computedAt'] as String,
+      json['computedAt'] as DateTime,
     );
   }
 }

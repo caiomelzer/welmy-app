@@ -6,7 +6,6 @@ import 'package:welmy/services/data.dart';
 import 'package:welmy/utils/alert.dart';
 
 class SignupPage extends StatelessWidget {
-  
   final _ctrlUsername = TextEditingController();
   final _ctrlPassword = TextEditingController();
   final _ctrlEmail = TextEditingController();
@@ -31,57 +30,41 @@ class SignupPage extends StatelessWidget {
             new Center(
               child: Container(
                 padding: const EdgeInsets.fromLTRB(0, 50, 0, 50),
-                  child: new Stack(
-                    children: <Widget>[
-                      new Image.asset(
-                        'assets/images/logo.png',
-                        width: 200.0,
-                        height: 100.0,
-                      ),
-                    ],
-                  ),
+                child: new Stack(
+                  children: <Widget>[
+                    new Image.asset(
+                      'assets/images/logo.png',
+                      width: 200.0,
+                      height: 100.0,
+                    ),
+                  ],
                 ),
               ),
-            _textFormField(
-              "Email",
-              "Digite seu email",
-              controller: _ctrlEmail,
-              validator : _validaLogin
             ),
-            _textFormField(
-              "Nome Completo",
-              "Digite seu nome completo",
-              senha: false,
-              controller: _ctrlFullname,
-              validator : _validaLogin
-            ),
-            _textFormField(
-              "Usuário",
-              "Digite seu nome de usuário",
-              senha: false,
-              controller: _ctrlUsername,
-              validator : _validaLogin
-            ),
-            _textFormField(
-              "Senha",
-              "Digite a Senha",
-              senha: true,
-              controller: _ctrlPassword,
-              validator : _validaSenha
-            ),
+            _textFormField("Email", "Digite seu email",
+                controller: _ctrlEmail, validator: _validaLogin),
+            _textFormField("Nome Completo", "Digite seu nome completo",
+                senha: false,
+                controller: _ctrlFullname,
+                validator: _validaLogin),
+            _textFormField("Usuário", "Digite seu nome de usuário",
+                senha: false,
+                controller: _ctrlUsername,
+                validator: _validaLogin),
+            _textFormField("Senha", "Digite a Senha",
+                senha: true,
+                controller: _ctrlPassword,
+                validator: _validaSenha),
             _raisedButton("Registrar", Colors.lightBlueAccent, context),
             FlatButton(
               onPressed: () {
-                Navigator.popAndPushNamed( 
-                  context,
-                  '/signin'
-                );
+                Navigator.popAndPushNamed(context, '/signin');
               },
               child: Text(
                 "Voltar",
               ),
             )
-        ],
+          ],
         ),
       ),
     );
@@ -106,26 +89,23 @@ class SignupPage extends StatelessWidget {
   }
 
   String _validaLogin(String texto) {
-    if(texto.isEmpty){
+    if (texto.isEmpty) {
       return "Digite seu email";
     }
-    if(texto.length<3){
+    if (texto.length < 3) {
       return "O campo precisa ter mais de 3 caracteres";
     }
     return null;
   }
 
   String _validaSenha(String texto) {
-    if(texto.isEmpty){
+    if (texto.isEmpty) {
       return "Digite a Senha";
     }
     return null;
   }
 
-  _raisedButton(
-    String texto, 
-    Color cor, 
-    BuildContext context) {
+  _raisedButton(String texto, Color cor, BuildContext context) {
     return RaisedButton(
       color: cor,
       child: Text(
@@ -141,7 +121,7 @@ class SignupPage extends StatelessWidget {
     );
   }
 
-   _clickButton(BuildContext context) async {
+  _clickButton(BuildContext context) async {
     bool formOk = _formKey.currentState.validate();
 
     if (!formOk) {
@@ -153,27 +133,24 @@ class SignupPage extends StatelessWidget {
     String fullname = _ctrlFullname.text;
     String email = _ctrlEmail.text;
 
-    var response2 = await LoginApi.signup(username,password,fullname,email);
-    
+    var response2 = await LoginApi.signup(username, password, fullname, email);
+
     var patient = new Patient();
     patient.fullname = fullname;
-    
-    var response = await LoginApi.signin(username,password);
-    if(response){
+
+    var response = await LoginApi.signin(username, password);
+    if (response) {
       var patient = new Patient();
-      print(response);
-      await DataApi.getPatientFullname().then((value){
-        print(value);
+      await DataApi.getPatientFullname().then((value) {
         patient.fullname = value;
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => HomePage(patient))
-        );
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HomePage(patient)));
       });
-    }
-    else
-      Alert.showAlertDialog(context, 'Ops...', 'Algo deu errado ao tentar fazer login. Verifique seu login e senha e tente novamente','alert');
-    }
+    } else
+      Alert.showAlertDialog(
+          context,
+          'Ops...',
+          'Algo deu errado ao tentar fazer login. Verifique seu login e senha e tente novamente',
+          'alert');
   }
-    
-
-
+}

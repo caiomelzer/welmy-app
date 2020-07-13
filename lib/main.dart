@@ -5,13 +5,15 @@ import 'package:welmy/pages/balanca.dart';
 import 'package:welmy/pages/about.dart';
 import 'package:welmy/pages/PatientPage.dart';
 import 'package:welmy/models/Patient.dart';
+import 'package:welmy/pages/PatientAddPage.dart';
 
 import 'package:http/http.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:welmy/pages/home.dart';
 
-void main() {runApp(MyApp());
+void main() {
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -19,17 +21,12 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-class _MyAppState  extends State<MyApp> {
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     var userData = getUserData();
-    print(userData);
-    
-    print(checkUserLoggedIn());
-    var page = checkUserLoggedIn() == null
-          ? HomePage(null)
-          : SigninPage();
+    var page = checkUserLoggedIn() == null ? HomePage(null) : SigninPage();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
@@ -39,8 +36,9 @@ class _MyAppState  extends State<MyApp> {
         '/balanca': (context) => BalancaPage(),
         '/sobre': (context) => AboutPage(),
         '/pacientes': (context) => PatientPage(),
+        '/pacientes-add': (context) => PatientAddPage(),
       },
-      theme: ThemeData(primaryColor : Colors.blue),
+      theme: ThemeData(primaryColor: Colors.blue),
       home: page,
     );
   }
@@ -49,13 +47,11 @@ class _MyAppState  extends State<MyApp> {
 Future<bool> checkUserLoggedIn() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token = prefs.getString('token');
-  print(token); 
-  if(token != null){
+  if (token != null) {
     return true;
-  }
-  else {
+  } else {
     return false;
-  } 
+  }
 }
 
 Future<Patient> getUserData() async {

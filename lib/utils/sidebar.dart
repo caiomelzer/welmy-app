@@ -7,7 +7,6 @@ import 'package:welmy/pages/about.dart';
 import 'package:welmy/models/patient.dart';
 import 'package:welmy/services/data.dart';
 
-
 class Sidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -25,45 +24,28 @@ class Sidebar extends StatelessWidget {
             title: Text('Home'),
             onTap: () {
               var patient = new Patient();
-              DataApi.getPatientFullname().then((value){
+              DataApi.getPatientFullname().then((value) {
                 patient.fullname = value;
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => HomePage(patient))
-                );
+                    MaterialPageRoute(builder: (context) => HomePage(patient)));
               });
-              
             },
           ),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Configurar Balança'),
-            onTap: () => {
-              Navigator.popAndPushNamed( 
-                context,
-                '/balanca'
-              )
-            },
+            onTap: () => {Navigator.popAndPushNamed(context, '/balanca')},
           ),
           ListTile(
             leading: Icon(Icons.book),
             title: Text('Sobre'),
-            onTap: () => {
-              Navigator.popAndPushNamed( 
-                context,
-                '/sobre'
-              )
-            },
+            onTap: () => {Navigator.popAndPushNamed(context, '/sobre')},
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Sair'),
-            onTap: () => {
-              logout(),
-              Navigator.popAndPushNamed( 
-                context,
-                '/signin'
-              )
-            },
+            onTap: () =>
+                {logout(), Navigator.popAndPushNamed(context, '/signin')},
           ),
         ],
       ),
@@ -72,11 +54,9 @@ class Sidebar extends StatelessWidget {
 
   Future logout() async {
     try {
-      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+      SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
       sharedPreferences.clear();
-      print(sharedPreferences);
-    } catch (e) {
-      print('erro');
-    }
+    } catch (e) {}
   }
 }
