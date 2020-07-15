@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Measurement {
   int id;
   String fullname;

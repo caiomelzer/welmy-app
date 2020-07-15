@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:intl/intl.dart';
 import 'package:welmy/models/Measurement.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import 'package:welmy/models/patient.dart';
 import 'package:welmy/utils/alert.dart';
 import 'package:welmy/services/data.dart';
 import 'package:date_format/date_format.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class HomePage extends StatefulWidget {
   Patient patient;
@@ -25,6 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   List<Measurement> measures = [];
   List<Measurement> userMeasure = [];
+  DateFormat format = new DateFormat("yyyy-MM-dd");
 
   String lastMeasure = '0,000';
   String barcode = "";
@@ -60,24 +63,19 @@ class _HomePageState extends State<HomePage> {
     var chart = charts.TimeSeriesChart(
       series,
       animate: true,
-      // domainAxis: new charts.OrdinalAxisSpec(
-      //   renderSpec: new charts.SmallTickRendererSpec(
-      //     labelStyle: new charts.TextStyleSpec(
-      //         fontSize: 10, // size in Pts.
-      //         color: charts.MaterialPalette.white),
-      //     lineStyle:
-      //         new charts.LineStyleSpec(color: charts.MaterialPalette.white),
-      //   ),
-      // ),
-      // primaryMeasureAxis: new charts.NumericAxisSpec(
-      //   renderSpec: new charts.GridlineRendererSpec(
-      //     labelStyle: new charts.TextStyleSpec(
-      //         fontSize: 12, // size in Pts.
-      //         color: charts.MaterialPalette.white),
-      //     lineStyle:
-      //         new charts.LineStyleSpec(color: charts.MaterialPalette.white),
-      //   ),
-      // ),
+      domainAxis: new charts.DateTimeAxisSpec(
+        renderSpec: charts.GridlineRendererSpec(
+            axisLineStyle: charts.LineStyleSpec(
+              color: charts.MaterialPalette
+                  .white, // this also doesn't change the Y axis labels
+            ),
+            labelStyle: new charts.TextStyleSpec(
+                fontSize: 10, color: charts.MaterialPalette.white),
+            lineStyle: charts.LineStyleSpec(
+              thickness: 1,
+              color: charts.MaterialPalette.gray.shade600,
+            )),
+      ),
     );
 
     var chartWidget = Padding(
@@ -318,29 +316,28 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       data3 = response;
       userMeasure = data3.map((item) {
-        DateTime todayDate = DateTime.parse(item['x']);
+        lastMeasure = item['weight'];
         Measurement(item['id'], item['fullname'], double.parse(item['weight']),
-            todayDate);
+            DateTime.parse(item['computedAt']));
       }).toList();
     });
-    if (userMeasure.length > 0) {
-      lastMeasure = userMeasure[0].weight.toString();
-      return userMeasure[0].weight.toString();
-    } else {
-      return '0,000';
-    }
+    return '0,000';
   }
 
   Future<String> getChartData2(selectedView) async {
     var patientId = await DataApi.getPatientId();
     var response = await MeasureApi.list(patientId, selectedView);
     setState(() {
+      if (selectedView == "Mes") format = new DateFormat("yyyy-MM");
+      if (selectedView == "Ano") format = new DateFormat("yyyy");
       data2 = response;
       measures = data2
           .map((item) => Measurement(item['id'], item['fullname'],
-              double.parse(item['weight']), DateTime.parse(item['x'])))
+              double.parse(item['weight']), format.parse(item['x'])))
           .toList();
     });
+    print(measures);
+
     return measures.toString();
   }
 

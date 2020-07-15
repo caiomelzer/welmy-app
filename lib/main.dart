@@ -6,6 +6,7 @@ import 'package:welmy/pages/about.dart';
 import 'package:welmy/pages/PatientPage.dart';
 import 'package:welmy/models/Patient.dart';
 import 'package:welmy/pages/PatientAddPage.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:http/http.dart';
 import 'package:flutter/services.dart';
